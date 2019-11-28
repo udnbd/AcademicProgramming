@@ -7,7 +7,7 @@
             "command": "g++",
             "args": [
                 "-g",
-                "main.cpp"
+                "main.c"
             ],
             "group": {
                 "kind": "build",
