@@ -3,6 +3,7 @@
 void Insert(int A[], int n)
 {
     int i = n, temp;
+
     temp = A[i];
 
     while (i > 1 && temp > A[i / 2])
@@ -18,7 +19,6 @@ int Delete(int A[], int n)
     int i, j, temp, val;
 
     val = A[1];
-
     A[1] = A[n];
     A[n] = val;
 
@@ -46,16 +46,24 @@ int Delete(int A[], int n)
 
 int main()
 {
-    int H[] = {0, 10, 20, 30, 25, 5, 40, 35};
-    int i;
+    //int H[] = {0, 10, 20, 30, 25, 5, 40, 35};
+    int H[100];
+    int i, j, n;
 
-    for (i = 2; i <= 7; i++)
+    printf("Enter Number of Elements to create and sort Heap:\n");
+    scanf("%d", &n);
+
+    printf("Enter the Integer Numbers preceding 0 Please !\n");
+    for (j = 0; j < n; j++)
+        scanf("%d", &H[j]);
+
+    for (i = 2; i < n; i++)
         Insert(H, i);
 
-    for (i = 7; i > 1; i--)
+    for (i = n - 1; i > 1; i--)
         Delete(H, i);
 
-    for (i = 1; i <= 7; i++)
+    for (i = 1; i < n; i++)
         printf("%d ", H[i]);
 
     return 0;
