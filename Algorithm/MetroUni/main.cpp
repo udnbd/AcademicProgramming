@@ -1,142 +1,62 @@
-#include <stdlib.h>
 #include <stdio.h>
 
-struct Node
+int max(int a, int b)
 {
-    int data;
-    struct Node *next;
-} *front = NULL, *rear = NULL;
-
-void enqueue(int x)
-{
-    struct Node *t;
-    t = (struct Node *)malloc(sizeof(struct Node));
-    if (t == NULL)
-        printf("Queue is Full\n");
+    if (a > b)
+    {
+        return a;
+    }
     else
     {
-        t->data = x;
-        t->next = NULL;
-        if (front == NULL)
-            front = rear = t;
-        else
+        return b;
+    }
+}
+
+int knapsack(int capacity, int weight[], int profit[], int n)
+{
+    int i, j;
+    int knap[n + 1][capacity + 1];
+    for (i = 0; i <= n; i++)
+    {
+        for (j = 0; j <= capacity; j++)
         {
-            rear->next = t;
-            rear = t;
+            if (i == 0 || j == 0)
+                knap[i][j] = 0;
+            else if (weight[i] <= j)
+                knap[i][j] = max(profit[i] + knap[i - 1][j - weight[i]], knap[i - 1][j]);
+            else
+                knap[i][j] = knap[i - 1][j];
         }
     }
-}
-int dequeue()
-{
-    int x = -1;
-    struct Node *t;
-
-    if (front == NULL)
-        printf("Queue is Empty\n");
-    else
-    {
-        x = front->data;
-        t = front;
-        front = front->next;
-        free(t);
-    }
-    return x;
-}
-
-int isEmpty()
-{
-    return front == NULL;
-}
-
-void BFS(int G[][100], int start, int n)
-{
-    int i = start, j;
-    int visited[100] = {0};
-
-    printf("%d ", i);
-    visited[i] = 1;
-    enqueue(i);
-
-    while (!isEmpty())
-    {
-        i = dequeue();
-        for (j = 1; j < n; j++)
-        {
-            if (G[i][j] == 1 && visited[j] == 0)
-            {
-                printf("%d ", j);
-                visited[j] = 1;
-                enqueue(j);
-            }
-        }
-    }
-}
-
-void DFS(int G[][100], int start, int n)
-{
-    static int visited[100] = {0};
-    int j;
-
-    if (visited[start] == 0)
-    {
-        printf("%d ", start);
-        visited[start] = 1;
-
-        for (j = 1; j < n; j++)
-        {
-            if (G[start][j] == 1 && visited[j] == 0)
-                DFS(G, j, n);
-        }
-    }
+    return knap[n][capacity];
 }
 
 int main()
 {
-    /*
-    int G[7][7] = {{0, 0, 0, 0, 0, 0, 0},
-                   {0, 0, 1, 1, 0, 0, 0},
-                   {0, 1, 0, 0, 1, 0, 0},
-                   {0, 1, 0, 0, 1, 0, 0},
-                   {0, 0, 1, 1, 0, 1, 1},
-                   {0, 0, 0, 0, 1, 0, 0},
-                   {0, 0, 0, 0, 1, 0, 0}};
-*/
-    int i, j, n, startnode, G[100][100];
 
-    printf("Enter Number of Nodes: ");
-    scanf("%d", &n);
+    int n, i, j, profit[100], weight[100], capacity;
 
-    printf("Enter the Adjacency Matrix: \n");
-    for (i = 1; i <= n; i++)
-        for (j = 1; j <= n; j++)
-            scanf("%d", &G[i][j]);
-
-    /*
-    printf("\n");
-    for (i = 0; i <= n; i++)
+    while (1)
     {
-        for (j = 0; j <= n; j++)
+        printf("\nEnter Number of Products: ");
+        scanf("%d", &n);
+
+        printf("Enter Weight & Profits accordingly Now: \n");
+        for (i = 1; i <= n; i++)
         {
-            printf("%d ", G[i][j]);
+            printf("Weight for Product Number %d : ", i);
+            scanf("%d", &weight[i]);
+            printf("Profit for Product Number %d : ", i);
+            scanf("%d", &profit[i]);
         }
-        printf("\n");
+
+        weight[0] = 0;
+        profit[0] = 0;
+
+        printf("Enter the capacity of Knapsack : ");
+        scanf("%d", &capacity);
+
+        printf("The maximum profit by knapsack is : %d \n", knapsack(capacity, weight, profit, n));
     }
-
-    */
-
-    //BFS(G, 4, 7);
-    printf("\n");
-
-    printf("Enter the Starting Node: ");
-    scanf("%d", &startnode);
-
-    printf("Breadth First Search Traversal is : \n");
-    BFS(G, startnode, n + 1);
-
-    printf("\n");
-
-    printf("Depth First Search Traversal is : \n");
-    DFS(G, startnode, n + 1);
-
     return 0;
 }

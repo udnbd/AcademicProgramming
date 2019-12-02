@@ -22,20 +22,41 @@ int knapsack(int capacity, int weight[], int profit[], int n)
         {
             if (i == 0 || j == 0)
                 knap[i][j] = 0;
-            else if (weight[i - 1] <= j)
-                knap[i][j] = max(profit[i - 1] + knap[i - 1][j - weight[i - 1]], knap[i - 1][j]);
+            else if (weight[i] <= j)
+                knap[i][j] = max(profit[i] + knap[i - 1][j - weight[i]], knap[i - 1][j]);
             else
                 knap[i][j] = knap[i - 1][j];
         }
     }
     return knap[n][capacity];
 }
+
 int main()
 {
-    int profit[] = {20, 25, 40};
-    int weight[] = {25, 20, 30};
-    int capacity = 50;
-    int n = sizeof(profit) / sizeof(profit[0]);
-    printf("The maximum profit by knapsack is : %d", knapsack(capacity, weight, profit, n));
+
+    int n, i, j, profit[100], weight[100], capacity;
+
+    while (1)
+    {
+        printf("\nEnter Number of Products: ");
+        scanf("%d", &n);
+
+        printf("Enter Weight & Profits accordingly Now: \n");
+        for (i = 1; i <= n; i++)
+        {
+            printf("Weight for Product Number %d : ", i);
+            scanf("%d", &weight[i]);
+            printf("Profit for Product Number %d : ", i);
+            scanf("%d", &profit[i]);
+        }
+
+        weight[0] = 0;
+        profit[0] = 0;
+
+        printf("Enter the capacity of Knapsack : ");
+        scanf("%d", &capacity);
+
+        printf("The maximum profit by knapsack is : %d \n", knapsack(capacity, weight, profit, n));
+    }
     return 0;
 }
