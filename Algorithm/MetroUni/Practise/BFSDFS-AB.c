@@ -93,25 +93,28 @@ void DFS(int G[][100], int start, int n)
 int main()
 {
     int i, j, n, startnode, G[100][100];
+    while (1)
+    {
+        printf("Enter Number of Nodes: ");
+        scanf("%d", &n);
 
-    printf("Enter Number of Nodes: ");
-    scanf("%d", &n);
+        printf("Enter the Adjacency Matrix: \n");
+        for (i = 1; i <= n; i++)
+            for (j = 1; j <= n; j++)
+                scanf("%d", &G[i][j]);
 
-    printf("Enter the Adjacency Matrix: \n");
-    for (i = 1; i <= n; i++)
-        for (j = 1; j <= n; j++)
-            scanf("%d", &G[i][j]);
+        printf("Enter the Starting Node: ");
+        scanf("%d", &startnode);
 
-    printf("Enter the Starting Node: ");
-    scanf("%d", &startnode);
+        printf("Breadth First Search Traversal is : \n");
+        BFS(G, startnode, n + 1);
 
-    printf("Breadth First Search Traversal is : \n");
-    BFS(G, startnode, n + 1);
+        printf("\n");
 
-    printf("\n");
+        printf("Depth First Search Traversal is : \n");
+        DFS(G, startnode, n + 1);
 
-    printf("Depth First Search Traversal is : \n");
-    DFS(G, startnode, n + 1);
-
+        printf("\n");
+    }
     return 0;
 }
