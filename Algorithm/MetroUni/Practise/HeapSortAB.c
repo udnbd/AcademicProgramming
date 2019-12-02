@@ -3,7 +3,6 @@
 void Insert(int A[], int n)
 {
     int i = n, temp;
-
     temp = A[i];
 
     while (i > 1 && temp > A[i / 2])
@@ -16,8 +15,8 @@ void Insert(int A[], int n)
 
 int Delete(int A[], int n)
 {
-    int i, j, temp, val;
 
+    int val, temp, i, j;
     val = A[1];
     A[1] = A[n];
     A[n] = val;
@@ -41,30 +40,38 @@ int Delete(int A[], int n)
         else
             break;
     }
+
     return val;
 }
 
 int main()
 {
-    //int H[] = {0, 10, 20, 30, 25, 5, 40, 35};
     int H[100];
     int i, j, n;
 
-    printf("Enter Number of Elements to create and sort Heap:\n");
-    scanf("%d", &n);
+    while (1)
+    {
 
-    printf("Enter the Integer Numbers preceding 0 Please !\n");
-    for (j = 0; j < n; j++)
-        scanf("%d", &H[j]);
+        printf("\nEnter Number of integers to Sort by HeapSort : ");
+        scanf("%d", &n);
 
-    for (i = 2; i < n; i++)
-        Insert(H, i);
+        printf("Enter %d Integers for a Complete Binary tree:\n", n);
 
-    for (i = n - 1; i > 1; i--)
-        Delete(H, i);
+        for (i = 1; i <= n; i++)
+            scanf("%d", &H[i]);
 
-    for (i = 1; i < n; i++)
-        printf("%d ", H[i]);
+        for (i = 2; i <= n; i++)
+            Insert(H, i);
+
+        for (i = n; i > 1; i--)
+            Delete(H, i);
+
+        printf("The Sorted Numbers are from small to big :\n");
+        for (i = 1; i <= n; i++)
+            printf("%d ", H[i]);
+
+        printf("\n");
+    }
 
     return 0;
 }

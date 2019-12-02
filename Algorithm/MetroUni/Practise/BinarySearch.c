@@ -3,38 +3,40 @@
 int main()
 {
 
-    int i, first, last, middle, search, n, array[100];
+    int n, first, last, middle, search, i, bs[100];
 
-    printf("Enter Number of Elements:\n");
-    scanf("%d", &n);
-
-    printf("Enter Sorted Integers:\n");
-    for (i = 0; i < n; i++)
-        scanf("%d", &array[i]);
-
-    printf("Enter an integer value to find: \n");
-    scanf("%d", &search);
-
-    first = 0;
-    last = n - 1;
-    middle = (first + last) / 2;
-
-    while (first <= last)
+    while (1)
     {
-        if (array[middle] < search)
-            first = middle + 1;
-        else if (array[middle] == search)
-        {
-            printf("%d is found at location %d", n, middle + 1);
-            break;
-        }
-        else
-            last = middle - 1;
+        printf("\n\nEnter number of Elements: ");
+        scanf("%d", &n);
 
-        middle = (first + last) / 2;
+        printf("Enter the numbers as sorted for Binary search: ");
+        for (i = 0; i < n; i++)
+            scanf("%d", &bs[i]);
+
+        printf("Enter a Number to search:");
+        scanf("%d", &search);
+
+        first = 0, last = n - 1, middle = (first + last) / 2;
+
+        while (first <= last)
+        {
+            if (bs[middle] < search)
+                first = middle + 1;
+            else if (bs[middle] == search)
+            {
+                printf("%d is found in the binary array!", search);
+                break;
+            }
+            else
+                last = middle - 1;
+
+            middle = (first + last) / 2;
+        }
+
+        if (last < first)
+            printf("%d not found in the binary array\n\n", search);
     }
-    if (first > last)
-        printf("%d is not in the list", search);
 
     return 0;
 }
