@@ -92,15 +92,7 @@ void DFS(int G[][100], int start, int n)
 
 int main()
 {
-    /*
-    int G[7][7] = {{0, 0, 0, 0, 0, 0, 0},
-                   {0, 0, 1, 1, 0, 0, 0},
-                   {0, 1, 0, 0, 1, 0, 0},
-                   {0, 1, 0, 0, 1, 0, 0},
-                   {0, 0, 1, 1, 0, 1, 1},
-                   {0, 0, 0, 0, 1, 0, 0},
-                   {0, 0, 0, 0, 1, 0, 0}};
-*/
+
     int i, j, n, startnode, G[100][100];
 
     printf("Enter Number of Nodes: ");
@@ -125,7 +117,7 @@ int main()
     */
 
     //BFS(G, 4, 7);
-    printf("\n");
+    //printf("\n");
 
     printf("Enter the Starting Node: ");
     scanf("%d", &startnode);

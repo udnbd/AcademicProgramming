@@ -48,10 +48,10 @@ int isEmpty()
     return front == NULL;
 }
 
-void BFS(int G[][7], int start, int n)
+void BFS(int G[][100], int start, int n)
 {
     int i = start, j;
-    int visited[7] = {0};
+    int visited[100] = {0};
 
     printf("%d ", i);
     visited[i] = 1;
@@ -72,9 +72,9 @@ void BFS(int G[][7], int start, int n)
     }
 }
 
-void DFS(int G[][7], int start, int n)
+void DFS(int G[][100], int start, int n)
 {
-    static int visited[7] = {0};
+    static int visited[100] = {0};
     int j;
 
     if (visited[start] == 0)
@@ -92,17 +92,26 @@ void DFS(int G[][7], int start, int n)
 
 int main()
 {
-    int G[7][7] = {{0, 0, 0, 0, 0, 0, 0},
-                   {0, 0, 1, 1, 0, 0, 0},
-                   {0, 1, 0, 0, 1, 0, 0},
-                   {0, 1, 0, 0, 1, 0, 0},
-                   {0, 0, 1, 1, 0, 1, 1},
-                   {0, 0, 0, 0, 1, 0, 0},
-                   {0, 0, 0, 0, 1, 0, 0}};
+    int i, j, n, startnode, G[100][100];
 
-    BFS(G, 4, 7);
+    printf("Enter Number of Nodes: ");
+    scanf("%d", &n);
+
+    printf("Enter the Adjacency Matrix: \n");
+    for (i = 1; i <= n; i++)
+        for (j = 1; j <= n; j++)
+            scanf("%d", &G[i][j]);
+
+    printf("Enter the Starting Node: ");
+    scanf("%d", &startnode);
+
+    printf("Breadth First Search Traversal is : \n");
+    BFS(G, startnode, n + 1);
+
     printf("\n");
-    DFS(G, 4, 7);
+
+    printf("Depth First Search Traversal is : \n");
+    DFS(G, startnode, n + 1);
 
     return 0;
 }
