@@ -1,77 +1,62 @@
 #include <stdio.h>
 
-void Insert(int A[], int n)
+int max(int a, int b)
 {
-    int i = n, temp;
-    temp = A[i];
-
-    while (i > 1 && temp > A[i / 2])
+    if (a > b)
     {
-        A[i] = A[i / 2];
-        i = i / 2;
+        return a;
     }
-    A[i] = temp;
+    else
+    {
+        return b;
+    }
 }
 
-int Delete(int A[], int n)
+int knapsack(int capacity, int weight[], int profit[], int n)
 {
-
-    int val, temp, i, j;
-    val = A[1];
-    A[1] = A[n];
-    A[n] = val;
-
-    i = 1;
-    j = 2 * i;
-
-    while (j < n - 1)
+    int i, j;
+    int knap[n + 1][capacity + 1];
+    for (i = 0; i <= n; i++)
     {
-        if (A[j + 1] > A[j])
-            j = j + 1;
-        if (A[i] < A[j])
+        for (j = 0; j <= capacity; j++)
         {
-            temp = A[i];
-            A[i] = A[j];
-            A[j] = temp;
-
-            i = j;
-            j = 2 * j;
+            if (i == 0 || j == 0)
+                knap[i][j] = 0;
+            else if (weight[i] <= j)
+                knap[i][j] = max(profit[i] + knap[i - 1][j - weight[i]], knap[i - 1][j]);
+            else
+                knap[i][j] = knap[i - 1][j];
         }
-        else
-            break;
     }
-
-    return val;
+    return knap[n][capacity];
 }
 
 int main()
 {
-    int H[100];
-    int i, j, n;
+
+    int n, i, j, profit[100], weight[100], capacity;
 
     while (1)
     {
-
-        printf("\nEnter Number of integers to Sort by HeapSort : ");
+        printf("\nEnter Number of Products: ");
         scanf("%d", &n);
 
-        printf("Enter %d Integers for a Complete Binary tree:\n", n);
-
+        printf("Enter Weight & Profits accordingly Now: \n");
         for (i = 1; i <= n; i++)
-            scanf("%d", &H[i]);
+        {
+            printf("Weight for Product Number %d : ", i);
+            scanf("%d", &weight[i]);
+            printf("Profit for Product Number %d : ", i);
+            scanf("%d", &profit[i]);
+        }
 
-        for (i = 2; i <= n; i++)
-            Insert(H, i);
+        weight[0] = 0;
+        profit[0] = 0;
 
-        for (i = n; i > 1; i--)
-            Delete(H, i);
+        printf("Enter the capacity of Knapsack : ");
+        scanf("%d", &capacity);
 
-        printf("The Sorted Numbers are from small to big :\n");
-        for (i = 1; i <= n; i++)
-            printf("%d ", H[i]);
-
-        printf("\n");
+        printf("The maximum profit by knapsack is : %d \n", knapsack(capacity, weight, profit, n));
     }
-
     return 0;
 }
