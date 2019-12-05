@@ -20,7 +20,7 @@ int main()
 
             for (j = 1; j <= nodes; j++)
             {
-                G[a][b] = G[b][a] = cost;
+                G[a][b] /*= G[b][a]*/ = cost;
             }
         }
     }

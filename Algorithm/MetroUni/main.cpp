@@ -1,6 +1,6 @@
-#include <cstdio>
+#include <iostream>
 
-#define I 99999
+#define I 9999
 
 using namespace std;
 
@@ -18,10 +18,57 @@ int t[2][6];
 
 int main()
 {
+    int i, j, k, u, v, n = 7, min = I;
 
-    int i, j, k, u, v, n = 7, min = 7;
     for (i = 1; i <= n; i++)
-        for (j = i; j <= n)
+    {
+        for (j = i; j <= n; j++)
+        {
+            if (cost[i][j] < min)
+            {
+                min = cost[i][j];
+                u = i;
+                v = j;
+            }
+        }
+    }
 
-            return 0;
+    t[0][0] = u;
+    t[1][0] = v;
+    near[u] = near[v] = 0;
+
+    for (i = 1; i <= n; i++)
+        if (near != 0)
+        {
+            if (cost[i][u] < cost[i][v])
+                near[i] = u;
+            else
+                near[i] = v;
+        }
+
+    for (i = 1; i < n - 1; i++)
+    {
+        min = I;
+        for (j = 1; j <= n; j++)
+        {
+            if (near[j] != 0 && cost[j][near[j]] < min)
+            {
+                k = j;
+                min = cost[j][near[j]];
+            }
+        }
+
+        t[0][i] = k;
+        t[1][i] = near[k];
+
+        for (j = 1; j <= n; j++)
+        {
+            if (near[j] != 0 && cost[j][k] < cost[j][near[j]])
+                near[j] = k;
+        }
+    }
+
+    for (i = 0; i < n - 1; i++)
+        cout << "(" << t[0][i] << "," << t[1][i] << ")" << endl;
+    return 0;
 }
