@@ -1,64 +1,45 @@
-#include <stdio.h>
-#include <limits.h>
+#include <iostream>
+#include <cstdlib>
+#include <cstring>
+using namespace std;
 
-int minDistance(int distance[],bool sptSet[], int n){
-    int i, min_index,min = INT_MAX;
+void lcs(char *X,char *Y, int m, int n){
+    int i,j,l[m+1][n+1];
 
-    for(i=0;i<n;i++){
-        if(sptSet[i] == false && distance[i]<=min)
-            min = distance[i];
-            min_index = i; 
-    }
-
-    return min_index;
-}
-int printSolution(int distance[], int k, int n){
-    int i;
-    printf("Vertex -> Distance from Source\n");
-    
-    for(i=0;i<n;i++)
-        printf("%d -> %d\n",i,distance[i]);
-}
-void dijkstra(int G[9][9], int start,int n){
-    int i,j,k,u,distance[9];
-    bool sptSet[9];
-
-    for(i=0;i<n;i++){
-        distance[i] = INT_MAX;
-        sptSet[i] = false;
-    }
-
-    distance[start] = 0;
-
-    for(j=0;j<n-1;j++){
-        u = minDistance(distance,sptSet,n);
-        sptSet[u] = true;
-
-        for(k=0;k<n;k++){
-        if(!sptSet[k] && G[u][k] && distance[u]!=INT_MAX && distance[u]+G[u][k] < distance[k])
-                distance[k] = distance[u] + G[u][k];
+    for(i=0;i<=m;i++)
+        for(j=0;j<=n;j++){
+            if(i==0 || j==0)
+                l[i][j] = 0;
+            else if(X[i-1] == Y[j-1])
+                l[i][j] = l[i-1][j-1] +1;
+            else l[i][j] =max(l[i-1][j],l[i][j-1]);
         }
+    int index = l[m][n];
+    char lcs[index+1];
+    lcs[index] = '\0';
+
+    i=m,j=n;
+    while(i>0 && j>0){
+        if(X[i-1] == Y[j-1]){
+            lcs[index-1] = X[i-1];
+            i--,j--,index--;
+        }
+        else if(l[i-1][j] >l[i][j-1])
+            i--;
+        else j--;
     }
-    printSolution(distance,k,n);
 
-
+    cout<< " LCS of " << X << " and " << Y << " is " <<lcs;
 }
+
 
 int main(){
-    int graph[9][9] = { { 0, 4, 0, 0, 0, 0, 0, 8, 0 },
-                        { 4, 0, 8, 0, 0, 0, 0, 11, 0 },
-                        { 0, 8, 0, 7, 0, 4, 0, 0, 2 },
-                        { 0, 0, 7, 0, 9, 14, 0, 0, 0 },
-                        { 0, 0, 0, 9, 0, 10, 0, 0, 0 },
-                        { 0, 0, 4, 14, 10, 0, 2, 0, 0 },
-                        { 0, 0, 0, 0, 0, 2, 0, 1, 6 },
-                        { 8, 11, 0, 0, 0, 0, 1, 0, 7 },
-                        { 0, 0, 2, 0, 0, 0, 6, 7, 0 } };
-    int n = 9;
-    //printf("Enter number of nodes : ");
-    //scanf("%d",&n);
-    int start = 0;
-    dijkstra(graph,start,n);
-    
+
+    char X[] = "AGGTAB";
+    char Y[] = "GXTXAYB";
+    int m= strlen(X);
+    int n= strlen(Y);
+
+    lcs(X,Y,m,n);
     return 0;
 }

@@ -5,7 +5,7 @@
 #include <stdio.h>
 
 // Number of vertices in the graph
-#define V 9
+#define V 100
 
 // A utility function to find the vertex with minimum distance value, from
 // the set of vertices not yet included in shortest path tree
