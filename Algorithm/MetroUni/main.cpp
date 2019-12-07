@@ -1,45 +1,34 @@
-#include <iostream>
-#include <cstdlib>
-#include <cstring>
+#include <bits/stdc++.h>
 using namespace std;
 
-void lcs(char *X,char *Y, int m, int n){
-    int i,j,l[m+1][n+1];
+void lis(int a[], int n){
+    unordered_map<int, int>mp;
+    int dp[n];
+    memset(dp,0,sizeof(dp));
+    int max=INT_MIN,index=-1,lastIndex,i,j;
 
-    for(i=0;i<=m;i++)
-        for(j=0;j<=n;j++){
-            if(i==0 || j==0)
-                l[i][j] = 0;
-            else if(X[i-1] == Y[j-1])
-                l[i][j] = l[i-1][j-1] +1;
-            else l[i][j] =max(l[i-1][j],l[i][j-1]);
+    for(i=0;i<n;i++){
+        if(mp.find(a[i]-1) != mp.end()){
+            lastIndex = mp[a[i]-1]-1;
+            dp[i] = 1 + dp[lastIndex];
         }
-    int index = l[m][n];
-    char lcs[index+1];
-    lcs[index] = '\0';
-
-    i=m,j=n;
-    while(i>0 && j>0){
-        if(X[i-1] == Y[j-1]){
-            lcs[index-1] = X[i-1];
-            i--,j--,index--;
+        else dp[i]=1;
+        
+        mp[a[i]] = i+1;
+        
+        if(max<dp[i]){
+            max=dp[i];
+            index = i;
         }
-        else if(l[i-1][j] >l[i][j-1])
-            i--;
-        else j--;
     }
-
-    cout<< " LCS of " << X << " and " << Y << " is " <<lcs;
+    for(j=a[index]-max+1;j<=a[index];j++)
+        cout<<j<<" ";
 }
 
-
 int main(){
+    int a[] = { 3, 10, 3, 11, 4, 5, 6, 7, 8, 12 }; 
+    int n= sizeof(a)/sizeof(a[0]);
 
-    char X[] = "AGGTAB";
-    char Y[] = "GXTXAYB";
-    int m= strlen(X);
-    int n= strlen(Y);
-
-    lcs(X,Y,m,n);
+    lis(a,n);
     return 0;
 }

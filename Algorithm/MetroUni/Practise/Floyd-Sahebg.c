@@ -37,6 +37,8 @@ void main()
         scanf("%d%d%d", &u, &v, &w);
         p[u][v] = w;
     }
+
+    /*
     printf("\n Matrix of input data:\n");
     for (i = 1; i <= n; i++)
     {
@@ -44,7 +46,9 @@ void main()
             printf("%d \t", p[i][j]);
         printf("\n");
     }
+    */
     floyds(p, n);
+    /*
     printf("\n Transitive closure:\n");
     for (i = 1; i <= n; i++)
     {
@@ -52,6 +56,8 @@ void main()
             printf("%d \t", p[i][j]);
         printf("\n");
     }
+
+    */
     printf("\n The shortest paths are:\n");
     for (i = 1; i <= n; i++)
         for (j = 1; j <= n; j++)
