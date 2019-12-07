@@ -100,9 +100,11 @@ int main()
 
         printf("Enter the Adjacency Matrix: \n");
         for (i = 1; i <= n; i++)
+        {
+            printf("Node %d : ", i);
             for (j = 1; j <= n; j++)
                 scanf("%d", &G[i][j]);
-
+        }
         printf("Enter the Starting Node: ");
         scanf("%d", &startnode);
 
