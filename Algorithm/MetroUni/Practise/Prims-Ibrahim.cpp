@@ -18,14 +18,15 @@ int cost[][8] = {{I, I, I, I, I, I, I, I},
 int main()
 {
 
-    int i, j, k, u, v, nodes, min = I, expense, edges, near[100], cost[100][100];
+
+    int i, j, k, u, v,nodes, min = I,expense,edges,near[100],cost[100][100];
 
     printf("Enter Number of Nodes: ");
     scanf("%d", &nodes);
 
-    int t[2][nodes - 1];
+    int t[2][nodes-1];
 
-    for (i = 0; i < nodes; i++)
+    for(i=0; i<nodes; i++)
         near[i] = I;
 
     printf("Enter Number of Edges: ");
@@ -43,7 +44,8 @@ int main()
                 cost[u][v] = expense;
             }
         }
-    }
+    } 
+
 
     for (i = 1; i <= nodes; i++)
     {
