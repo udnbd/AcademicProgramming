@@ -2,31 +2,18 @@
 #define I 9999
 
 using namespace std;
-/*
-int cost[][8] = {{I, I, I, I, I, I, I, I},
-                 {I, I, 25, I, I, I, 5, I},
-                 {I, 25, I, 12, I, I, I, 10},
-                 {I, I, 12, I, 8, I, I, I},
-                 {I, I, I, 8, I, 16, I, 14},
-                 {I, I, I, I, 16, I, 20, 18},
-                 {I, 5, I, I, I, 20, I, I},
-                 {I, I, 10, I, 14, 18, I, I}};
-
- */
-//int near[8] = {I, I, I, I, I, I, I, I};
 
 int main()
 {
 
-
-    int i, j, k, u, v,nodes, min = I,expense,edges,near[100],cost[100][100];
+    int i, j, k, u, v, nodes, min = I, expense, edges, near[100], cost[100][100];
 
     printf("Enter Number of Nodes: ");
     scanf("%d", &nodes);
 
-    int t[2][nodes-1];
+    int t[2][nodes - 1];
 
-    for(i=0; i<nodes; i++)
+    for (i = 0; i < nodes; i++)
         near[i] = I;
 
     printf("Enter Number of Edges: ");
@@ -38,14 +25,12 @@ int main()
         scanf("%d %d %d", &u, &v, &expense);
         for (i = 1; i <= nodes; i++)
         {
-
             for (j = 1; j <= nodes; j++)
             {
                 cost[u][v] = expense;
             }
         }
-    } 
-
+    }
 
     for (i = 1; i <= nodes; i++)
     {

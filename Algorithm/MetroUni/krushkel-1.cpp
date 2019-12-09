@@ -5,7 +5,7 @@
 #include<bits/stdc++.h>
 using namespace std;
 int mark[100000];
-
+4
 int n,m,a,b,c,ans;
 struct data
 {
