@@ -3,7 +3,7 @@
     "terminal.integrated.fontSize": 16,
     "debug.console.fontSize": 17,
     "workbench.colorTheme": "Cobalt2",
-    "window.zoomLevel": 1,
+    "window.zoomLevel": 0,
     "highlight-matching-tag.styles": {
         "opening": {
             "name": {
