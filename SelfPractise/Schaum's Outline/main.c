@@ -18,10 +18,10 @@ int main()
             for (k = 0; k < n; k++)
             {
                 //printf("Level K");
-                printf("\n");
+                printf(":");
                 for (l = 0; l < n; l++)
                 {
-                    printf("%c ", val);
+                    printf("%d ", l);
                 }
             }
         }
