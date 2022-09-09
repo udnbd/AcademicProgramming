@@ -1,0 +1,156 @@
+{
+  "terminal.integrated.shell.windows": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+  "terminal.integrated.fontSize": 16,
+  "debug.console.fontSize": 17,
+  "workbench.colorTheme": "Cobalt2",
+  "window.zoomLevel": 0,
+  "highlight-matching-tag.styles": {
+    "opening": {
+      "name": {
+        "underline": "yellow",
+        "highlight": "rgba(255,255,0,0.2)"
+      }
+    }
+  },
+  "workbench.iconTheme": "material-icon-theme",
+  "explorer.confirmDelete": false,
+  "color-highlight.markerType": "dot-after",
+  "editor.suggestSelection": "first",
+  "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+  "peacock.favoriteColors": [
+    {
+      "name": "Angular Red",
+      "value": "#b52e31"
+    },
+    {
+      "name": "Auth0 Orange",
+      "value": "#eb5424"
+    },
+    {
+      "name": "Azure Blue",
+      "value": "#007fff"
+    },
+    {
+      "name": "C# Purple",
+      "value": "#68217A"
+    },
+    {
+      "name": "Gatsby Purple",
+      "value": "#639"
+    },
+    {
+      "name": "Go Cyan",
+      "value": "#5dc9e2"
+    },
+    {
+      "name": "Java Blue-Gray",
+      "value": "#557c9b"
+    },
+    {
+      "name": "JavaScript Yellow",
+      "value": "#f9e64f"
+    },
+    {
+      "name": "Mandalorian Blue",
+      "value": "#1857a4"
+    },
+    {
+      "name": "Node Green",
+      "value": "#215732"
+    },
+    {
+      "name": "React Blue",
+      "value": "#00b3e6"
+    },
+    {
+      "name": "Something Different",
+      "value": "#832561"
+    },
+    {
+      "name": "Vue Green",
+      "value": "#42b883"
+    }
+  ],
+  "debug.onTaskErrors": "debugAnyway",
+  "C_Cpp.updateChannel": "Insiders",
+  "editor.fontFamily": "'Fira Code', Consolas, 'Courier New', monospace",
+  "editor.fontLigatures": true,
+  "editor.fontSize": 20,
+  "editor.formatOnSave": true,
+  "git.enableSmartCommit": true,
+  "git.allowForcePush": true,
+
+  "files.associations": {
+    "cstdio": "cpp",
+    "iostream": "cpp",
+    "array": "c",
+    "atomic": "c",
+    "*.tcc": "c",
+    "bitset": "c",
+    "cctype": "c",
+    "cfenv": "c",
+    "charconv": "c",
+    "chrono": "c",
+    "cinttypes": "c",
+    "clocale": "c",
+    "cmath": "c",
+    "codecvt": "c",
+    "complex": "c",
+    "condition_variable": "c",
+    "csetjmp": "c",
+    "csignal": "c",
+    "cstdarg": "c",
+    "cstddef": "c",
+    "cstdint": "c",
+    "cstdlib": "c",
+    "cstring": "c",
+    "ctime": "c",
+    "cuchar": "c",
+    "cwchar": "c",
+    "cwctype": "c",
+    "deque": "c",
+    "forward_list": "c",
+    "list": "c",
+    "unordered_map": "c",
+    "unordered_set": "c",
+    "vector": "c",
+    "exception": "c",
+    "algorithm": "c",
+    "functional": "c",
+    "iterator": "c",
+    "map": "c",
+    "memory": "c",
+    "memory_resource": "c",
+    "numeric": "c",
+    "optional": "c",
+    "random": "c",
+    "ratio": "c",
+    "regex": "c",
+    "set": "c",
+    "string": "c",
+    "string_view": "c",
+    "system_error": "c",
+    "tuple": "c",
+    "type_traits": "c",
+    "utility": "c",
+    "fstream": "c",
+    "future": "c",
+    "initializer_list": "c",
+    "iomanip": "c",
+    "iosfwd": "c",
+    "istream": "c",
+    "limits": "c",
+    "mutex": "c",
+    "new": "c",
+    "ostream": "c",
+    "scoped_allocator": "c",
+    "shared_mutex": "c",
+    "sstream": "c",
+    "stdexcept": "c",
+    "streambuf": "c",
+    "thread": "c",
+    "typeindex": "c",
+    "typeinfo": "c",
+    "valarray": "c"
+  }
+}
